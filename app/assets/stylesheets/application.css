@@ -14,3 +14,20 @@
  *= require_self
  */
 @import "pico.firstdraft.css";
+
+.waiting_on,
+.received {
+  padding: 1rem;
+}
+.waiting_on {
+  background-color: lightgoldenrodyellow;
+  margin-block-end: 1rem;
+}
+
+.received {
+	background-color: lightgreen;
+}
+
+.late-date {
+  color: red;
+}
