@@ -51,9 +51,10 @@
   <h2>Waiting on</h2>
   <ul>
     <% @waiting.each do |a_delivery| %>
+      <% days_difference = (a_delivery.supposed_to_arrive_on - Date.current).to_i %>
       <li>
         <div><%= a_delivery.description %></div>
-        <div style="color: red">Supposed to arrive on <%= a_delivery.supposed_to_arrive_on %></div>
+        <div class="<%= days_difference < -3 ? 'late-date' : '' %>">Supposed to arrive on <%= a_delivery.supposed_to_arrive_on %></div>
         <div><%= a_delivery.details %></div>
         <div>
           <form action="/modify_delivery/<%= a_delivery.id %>" method="post">
