@@ -6,11 +6,51 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.conditional.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.colors.min.css">
+
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="pico">
+    <header>
+      <div class="container-two-thirds">
+        <nav>
+          <ul>
+            <% if current_user == nil %>
+              <li>
+                <a href="/users/sign_up">Sign up</a>
+              </li>
+              <li>
+                <a href="/users/sign_in">Sign in</a>
+              </li>
+            <% else %>
+              <li>
+                <a href="/">Delivery Tracker</a>
+              </li>
+              <li>
+                <a href="/users/edit">Edit profile</a>
+              </li>
+              <li>
+                <a href="/users/sign_out">Sign out</a>
+              </li>
+            <% end %>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <div class="container-two-thirds">
+
+        <p class="text-danger"><%= alert %></p>
+        <p class="text-success"><%= notice %></p>
+
+        <%= yield %>
+      </div>
+
+    </main>
+
   </body>
 </html>
